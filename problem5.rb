@@ -12,7 +12,7 @@ def find_sums_to_a_hundred(*numbers)
     possibility = "%05d" % (i.to_s 3)
     possibility = possibility.split ''
     expression = ''
-    numbers.each_with_index do |number, j|
+    numbers[0..-2].each_with_index do |number, j|
       expression += number.to_s
       case possibility[j].to_i
       when 0 then expression += '+'
