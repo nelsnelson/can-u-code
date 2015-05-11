@@ -14,8 +14,8 @@ end
 
 def while_loop_sum(list)
   sum = 0
-  while list.length > 0
-    sum += list.pop
+  while (element = list.pop)
+    sum += element
   end
   sum
 end
