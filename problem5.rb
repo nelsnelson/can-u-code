@@ -20,8 +20,8 @@ def find_sums_to_a_hundred(*numbers)
       end
     end
     expression += numbers.last.to_s
-    n = eval expression
-    sums << "#{expression} == #{n}" if n == 100
+    sum = eval expression
+    sums << "#{expression} == #{n}" if sum == 100
   end
   sums
 end
