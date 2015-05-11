@@ -21,7 +21,7 @@ def find_sums_to_a_hundred(*numbers)
     end
     expression += numbers.last.to_s
     sum = eval expression
-    sums << "#{expression} == #{n}" if sum == 100
+    sums << "#{expression} == #{sum}" if sum == 100
   end
   sums
 end
