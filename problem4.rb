@@ -3,7 +3,8 @@
 # Write a function that given a list of non negative integers,
 # arranges them such that they form the largest possible number.
 # For example, given [50, 2, 1, 9], the largest formed number is
-# 95021.
+# 95021.  And given [420, 42, 423], the largest formed number is
+# 42423420.
 
 def embiggen(*numbers)
   numbers.map! &:to_i
@@ -12,15 +13,19 @@ def embiggen(*numbers)
   for n in numbers
     denominated_numbers = [ n ]
     denomination = n
+    i = denomination.to_s.length
     while denomination > 10
       denomination = denomination / 10
     end
-    denominated_numbers.concat largest[denomination] if largest.include? denomination
-    largest[denomination] = denominated_numbers.sort.reverse
+    largest[denomination] = Hash.new unless largest.include? denomination
+    denominated_numbers.concat largest[denomination][i] if largest[denomination].include? i
+    largest[denomination][i] = denominated_numbers.sort.reverse
   end
   for denomination in largest.keys.sort.reverse
-    for n in largest[denomination]
-      embiggened += n.to_s
+    for magnitude in largest[denomination].keys.sort
+      for n in largest[denomination][magnitude]
+        embiggened += n.to_s
+      end
     end
   end
   embiggened
