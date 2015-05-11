@@ -17,7 +17,7 @@ def embiggen(*numbers)
     while denomination > 10
       denomination = denomination / 10
     end
-    largest[denomination] = Hash.new unless largest.include? denomination
+    largest[denomination] ||= Hash.new
     denominated_numbers.concat largest[denomination][i] if largest[denomination].include? i
     largest[denomination][i] = denominated_numbers.sort.reverse
   end
