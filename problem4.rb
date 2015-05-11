@@ -10,13 +10,13 @@ def embiggen(*numbers)
   embiggened = ''
   largest = Hash.new
   for n in numbers
-    numbers = [ n ]
+    denominated_numbers = [ n ]
     denomination = n
     while denomination > 10
       denomination = denomination / 10
     end
-    numbers.concat largest[denomination] if largest.include? denomination
-    largest[denomination] = numbers.sort.reverse
+    denominated_numbers.concat largest[denomination] if largest.include? denomination
+    largest[denomination] = denominated_numbers.sort.reverse
   end
   for denomination in largest.keys.sort.reverse
     for n in largest[denomination]
